@@ -17,7 +17,7 @@ public static class Extension
         {
             c.SwaggerDoc("v1",
                 new OpenApiInfo
-                    { Title = "Hedwig Server", Version = "v1", Description = "Boilerplate .NET7 Server Using gRPC" });
+                    { Title = "Boilerplate .NET7 Server Using gRPC ", Version = "v1", Description = "Boilerplate .NET7 Server Using gRPC" });
         });
     }
 
