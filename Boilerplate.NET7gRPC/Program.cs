@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddGrpcReflection();
+builder.Services.AddGrpc().AddJsonTranscoding();
 
 var app = builder.Build();
 
