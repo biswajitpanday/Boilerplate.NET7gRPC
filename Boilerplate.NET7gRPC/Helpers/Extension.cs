@@ -1,15 +1,13 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Google.Api;
+using Microsoft.OpenApi.Models;
+using Repository.DbContext;
 
-namespace Boilerplate.NET7gRPC.Extensions;
+namespace Api.Helpers;
 
 public static class Extension
 {
 
     #region MiddleWare Configure
-    /// <summary>
-    /// Configure Swagger for this application
-    /// </summary>
-    /// <param name="services"></param>
     public static void AppRegisterSwagger(this IServiceCollection services)
     {
         services.AddGrpcSwagger();
@@ -21,16 +19,20 @@ public static class Extension
         });
     }
 
+    public static void AppAddDbContext(this IServiceCollection services)
+    {
+        //services.AddDbContext<AppDbContext>(options =>
+        //{
+        //    options.UseSqlServer(services.GetConnectionString("DefaultConnection"));
+        //});
+    }
+
     #endregion
 
 
 
     #region MiddleWare Use
-
-    /// <summary>
-    /// Use Swagger and make Swagger url the main api url
-    /// </summary>
-    /// <param name="app"></param>
+    
     public static void AppUseSwagger(this WebApplication app)
     {
         app.UseSwagger();
