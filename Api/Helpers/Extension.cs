@@ -1,8 +1,4 @@
-﻿using Google.Api;
-using Microsoft.OpenApi.Models;
-using Repository.DbContext;
-
-namespace Api.Helpers;
+﻿namespace Api.Helpers;
 
 public static class Extension
 {

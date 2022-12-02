@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.50.0" />
     <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.50.0" />
     <PackageReference Include="Grpc.Core" Version="2.46.5" />
@@ -20,6 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Service\Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "Boilerplate.NET7gRPC";
+option csharp_namespace = "Api.Protos";
 
 package greet;
 import "google/api/annotations.proto";

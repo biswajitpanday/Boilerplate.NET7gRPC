@@ -1,7 +1,3 @@
-using Api.Helpers;
-using Api.Middlewares.Interceptors;
-using Api.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Additional configuration is required to successfully run gRPC on macOS.

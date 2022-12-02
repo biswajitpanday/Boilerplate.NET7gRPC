@@ -1,6 +1,3 @@
-using Boilerplate.NET7gRPC;
-using Grpc.Core;
-
 namespace Api.Services;
 
 public class GreeterService : Greeter.GreeterBase

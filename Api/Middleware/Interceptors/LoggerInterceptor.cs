@@ -1,8 +1,4 @@
-﻿using Grpc.Core;
-using Grpc.Core.Interceptors;
-using Microsoft.Data.SqlClient;
-
-namespace Api.Middlewares.Interceptors;
+﻿namespace Api.Middleware.Interceptors;
 
 public class LoggerInterceptor : Interceptor
 {
@@ -91,7 +87,7 @@ public class LoggerInterceptor : Interceptor
 
 
     #region Private Methods
-    
+
     private void LogCall(ServerCallContext context)
     {
         var httpContext = context.GetHttpContext();
