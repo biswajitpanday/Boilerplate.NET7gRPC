@@ -6,3 +6,5 @@ global using Grpc.Core;
 global using Grpc.Core.Interceptors;
 global using Microsoft.Data.SqlClient;
 global using Microsoft.OpenApi.Models;
+global using Bogus;
+global using Core.Entities;

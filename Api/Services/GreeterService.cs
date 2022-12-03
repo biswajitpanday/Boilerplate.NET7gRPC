@@ -1,6 +1,4 @@
-using Bogus;
-using Core.Entities;
-using Repository.AppDbContext;
+using Repository.DatabaseContext;
 
 namespace Api.Services;
 

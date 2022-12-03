@@ -1,7 +1,7 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Repository.AppDbContext;
+namespace Repository.DatabaseContext;
 
 public class AppDbContext : DbContext
 {
@@ -10,5 +10,5 @@ public class AppDbContext : DbContext
         
     }
 
-    public DbSet<User> Users { get; set; }
+    public DbSet<User> Users { get; set; } = null!;
 }

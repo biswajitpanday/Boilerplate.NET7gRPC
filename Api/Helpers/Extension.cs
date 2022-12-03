@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repository.AppDbContext;
+using Repository.DatabaseContext;
 
 namespace Api.Helpers;
 
