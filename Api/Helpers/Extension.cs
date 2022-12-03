@@ -1,4 +1,7 @@
-﻿namespace Api.Helpers;
+﻿using Microsoft.EntityFrameworkCore;
+using Repository.AppDbContext;
+
+namespace Api.Helpers;
 
 public static class Extension
 {
@@ -15,12 +18,17 @@ public static class Extension
         });
     }
 
-    public static void AppAddDbContext(this IServiceCollection services)
+    public static void AppAddDbContext(this WebApplicationBuilder builder)
     {
-        //services.AddDbContext<AppDbContext>(options =>
-        //{
-        //    options.UseSqlServer(services.GetConnectionString("DefaultConnection"));
-        //});
+        builder.Services.AddDbContext<AppDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
+    }
+    
+    public static void AddInfrastructureServices(this IServiceCollection services)
+    {
+        
     }
 
     #endregion

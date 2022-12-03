@@ -1,18 +1,35 @@
+using Bogus;
+using Core.Entities;
+using Repository.AppDbContext;
+
 namespace Api.Services;
 
 public class GreeterService : Greeter.GreeterBase
 {
     private readonly ILogger<GreeterService> _logger;
-    public GreeterService(ILogger<GreeterService> logger)
+    private readonly AppDbContext _dbContext;
+
+    public GreeterService(ILogger<GreeterService> logger, AppDbContext dbContext)
     {
         _logger = logger;
+        _dbContext = dbContext;
     }
 
-    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    public override async Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
-        return Task.FromResult(new HelloReply
+        var faker = new Faker();
+        var user = new User
         {
-            Message = "Hello " + request.Name
+            Id = faker.Random.Guid(),
+            Email = faker.Person.Email,
+            FirstName = faker.Person.FirstName,
+            LastName = faker.Person.LastName
+        };
+        var result = await _dbContext.Users.AddAsync(user);
+
+        return await Task.FromResult(new HelloReply
+        {
+            Message = $"An User is Created {request.Name}. User : {result.Entity.FirstName}"
         });
     }
 }

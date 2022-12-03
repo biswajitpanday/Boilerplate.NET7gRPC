@@ -39,7 +39,7 @@ public class LoggerInterceptor : Interceptor
         }
         catch (Exception e)
         {
-            _logger.LogError(e, $"An error occured when calling {context.Method}");
+            _logger.LogError(e, $"An error occurred when calling {context.Method}");
             throw new RpcException(Status.DefaultCancelled, e.Message);
         }
     }

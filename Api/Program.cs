@@ -4,6 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
 // Add services to the container.
+
+// Start: gRPC Configurations
 builder.Services.AddGrpc(options =>
 {
     options.Interceptors.Add<LoggerInterceptor>();
@@ -12,7 +14,10 @@ builder.Services.AddGrpc(options =>
 builder.Services.AddGrpcReflection();
 builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AppRegisterSwagger();
-builder.Services.AppAddDbContext();
+// End: gRPC Configurations
+
+builder.AppAddDbContext();
+builder.Services.AddInfrastructureServices();
 
 var app = builder.Build();
 
