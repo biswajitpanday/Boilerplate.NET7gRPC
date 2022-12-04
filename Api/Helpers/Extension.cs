@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Repository;
 using Repository.Base;
 using Repository.DatabaseContext;
+using Serilog;
 
 namespace Api.Helpers;
 
@@ -25,6 +26,14 @@ public static class Extension
                 Description = "Boilerplate .NET7 Server Using gRPC"
             });
         });
+
+        // Serilog
+        builder.Host.UseSerilog((ctx, services, lc) => lc
+            .WriteTo.Console()
+            .WriteTo.File("Logs\\log-.txt", 
+                rollingInterval: RollingInterval.Day, 
+                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+            .WriteTo.Seq("https://localhost:3999"));
 
         // Application Database Context
         builder.Services.AddDbContext<AppDbContext>(options =>
