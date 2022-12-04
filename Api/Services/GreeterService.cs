@@ -1,5 +1,6 @@
 using Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Api.Services;
 
@@ -24,12 +25,13 @@ public class GreeterService : Greeter.GreeterBase
             LastName = faker.Person.LastName
         };
         await _userRepository.AddAsync(user);
+        await _userRepository.SaveChangesAsync(true);
         var userResult = await _userRepository.ListAsync();
-        var a = await _userRepository.Queryable.Where(x => x.CreatedAt > DateTime.UtcNow.AddDays(-1)).ToListAsync();
+        var users = await _userRepository.Queryable.Where(x => x.CreatedAt > DateTime.UtcNow.AddDays(-1)).ToListAsync();
 
         return await Task.FromResult(new HelloReply
         {
-            Message = $"An User is Created {request.Name}. User : {user.ToString()}"
+            Message = $"An User is Created {request.Name}. User : {JsonConvert.SerializeObject(users, Formatting.None)}"
         });
     }
 }

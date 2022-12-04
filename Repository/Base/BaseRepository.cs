@@ -19,4 +19,11 @@ public class BaseRepository<T> : EFRepository<T>, IBaseRepository<T> where T : B
         _dbSet = _context.Set<T>();
         _queryable = _context.QuerySet<T?>().Where(x => !x!.IsDeleted);
     }
+
+    public async Task SaveChangesAsync(bool acceptAllChangesOnSuccess) 
+        => await _context.SaveChangesAsync(acceptAllChangesOnSuccess);
+
+    public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
+
+    public void Save() => _context.SaveChanges();
 }

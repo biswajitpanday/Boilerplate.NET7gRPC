@@ -13,15 +13,14 @@ builder.Services.AddGrpc(options =>
 });
 builder.Services.AddGrpcReflection();
 builder.Services.AddGrpc().AddJsonTranscoding();
-builder.Services.AppRegisterSwagger();
+builder.Services.AddGrpcSwagger();
 // End: gRPC Configurations
 
-builder.AppAddDbContext();
 builder.AddInfrastructureServices();
 builder.AddBusinessServices();
 
-var app = builder.Build();
 
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.AppUseSwagger();
 app.MapGrpcService<GreeterService>();

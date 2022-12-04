@@ -10,28 +10,27 @@ public static class Extension
 {
 
     #region MiddleWare Configure
-    public static void AppRegisterSwagger(this IServiceCollection services)
-    {
-        services.AddGrpcSwagger();
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1",
-                new OpenApiInfo
-                    { Title = "Boilerplate .NET7 Server Using gRPC ", Version = "v1", Description = "Boilerplate .NET7 Server Using gRPC" });
-        });
-    }
 
-    public static void AppAddDbContext(this WebApplicationBuilder builder)
+    public static void AddInfrastructureServices(this WebApplicationBuilder builder)
     {
+        // Swagger, DBContext, Identity, Jwt, Authentication, Authorization, <IDatetime, DateTimeService>
+
+        // Swagger
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Boilerplate .NET7 Server Using gRPC ",
+                Version = "v1",
+                Description = "Boilerplate .NET7 Server Using gRPC"
+            });
+        });
+
+        // Application Database Context
         builder.Services.AddDbContext<AppDbContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
-    }
-    
-    public static void AddInfrastructureServices(this WebApplicationBuilder builder)
-    {
-        // Swagger, DBContext, Identity, Jwt, Authentication, Authorization, <IDatetime, DateTimeService>
     }
 
     public static void AddBusinessServices(this WebApplicationBuilder builder)
