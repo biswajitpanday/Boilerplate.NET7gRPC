@@ -17,7 +17,8 @@ builder.Services.AppRegisterSwagger();
 // End: gRPC Configurations
 
 builder.AppAddDbContext();
-builder.Services.AddInfrastructureServices();
+builder.AddInfrastructureServices();
+builder.AddBusinessServices();
 
 var app = builder.Build();
 

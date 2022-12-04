@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Repository;
+using Repository.Base;
 using Repository.DatabaseContext;
 
 namespace Api.Helpers;
@@ -26,17 +29,38 @@ public static class Extension
         });
     }
     
-    public static void AddInfrastructureServices(this IServiceCollection services)
+    public static void AddInfrastructureServices(this WebApplicationBuilder builder)
     {
-        
+        // Swagger, DBContext, Identity, Jwt, Authentication, Authorization, <IDatetime, DateTimeService>
+    }
+
+    public static void AddBusinessServices(this WebApplicationBuilder builder)
+    {
+        AddRepositories(builder.Services);
+        AddServices(builder.Services);
     }
 
     #endregion
 
 
+    #region Private Methods
+
+    public static void AddServices(IServiceCollection services)
+    {
+        //services.AddTransient<IUserService, UserService>();
+    }
+
+    private static void AddRepositories(IServiceCollection services)
+    {
+        services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+        services.AddScoped<IUserRepository, UserRepository>();
+    }
+
+    #endregion
+
 
     #region MiddleWare Use
-    
+
     public static void AppUseSwagger(this WebApplication app)
     {
         app.UseSwagger();
