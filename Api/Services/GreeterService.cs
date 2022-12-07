@@ -1,9 +1,11 @@
 using Core.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Api.Services;
 
+[Authorize]
 public class GreeterService : Greeter.GreeterBase
 {
     private readonly ILogger<GreeterService> _logger;

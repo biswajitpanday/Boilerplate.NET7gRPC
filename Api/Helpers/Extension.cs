@@ -1,5 +1,8 @@
-﻿using Core.Interfaces.Repositories;
+﻿using System.Text;
+using Core.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Repository;
 using Repository.Base;
 using Repository.DatabaseContext;
@@ -14,7 +17,7 @@ public static class Extension
 
     public static void AddInfrastructureServices(this WebApplicationBuilder builder)
     {
-        // Swagger, DBContext, Identity, Jwt, Authentication, Authorization, <IDatetime, DateTimeService>
+        // Swagger, Serilog, DBContext, Identity, Jwt, Authentication, Authorization, <IDatetime, DateTimeService>
 
         // Swagger
         builder.Services.AddSwaggerGen(c =>
@@ -40,6 +43,20 @@ public static class Extension
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
+
+        // Authentication
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+        {
+            opt.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+            };
+        });
+        
+        // Authorization
+        builder.Services.AddAuthorization();
     }
 
     public static void AddBusinessServices(this WebApplicationBuilder builder)
