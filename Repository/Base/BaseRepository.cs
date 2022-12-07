@@ -8,22 +8,22 @@ namespace Repository.Base;
 
 public class BaseRepository<T> : EFRepository<T>, IBaseRepository<T> where T : BaseEntity
 {
-    private readonly AppDbContext _context;
+    private readonly AppDbContext _dbContext;
     private readonly DbSet<T> _dbSet;
     private readonly IQueryable<T?> _queryable;
 
-
-    public BaseRepository(AppDbContext context) : base(context)
+    public BaseRepository(AppDbContext dbContext) : base(dbContext)
     {
-        _context = context;
-        _dbSet = _context.Set<T>();
-        _queryable = _context.QuerySet<T?>().Where(x => !x!.IsDeleted);
+        _dbContext = dbContext;
+        _dbSet = _dbContext.Set<T>();
+        _queryable = _dbContext.QuerySet<T?>().Where(x => !x!.IsDeleted);
     }
 
     public async Task SaveChangesAsync(bool acceptAllChangesOnSuccess) 
-        => await _context.SaveChangesAsync(acceptAllChangesOnSuccess);
+        => await _dbContext.SaveChangesAsync(acceptAllChangesOnSuccess);
+    public async Task SaveChangesAsync() => await _dbContext.SaveChangesAsync();
+    public void Save() => _dbContext.SaveChanges();
 
-    public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
-
-    public void Save() => _context.SaveChanges();
+    public async Task RollbackAsync() => await _dbContext.DisposeAsync();
+    public void Rollback() => _dbContext.Dispose();
 }
