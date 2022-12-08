@@ -6,7 +6,7 @@ option csharp_namespace = "GRPC.NET7.Api.Protos";
 package user;
 
 service User {
-	rpc Create(UserCreateRequest) returns (UserCreateResponse) {
+	rpc Create(UserCreateRequest) returns (base.BaseResponse) {
 		option (google.api.http) = {
 			post: "/v1/user"
 		};
@@ -17,8 +17,4 @@ message UserCreateRequest {
 	string firstName = 1;
 	string lastName = 2;
 	string email = 3;
-}
-
-message UserCreateResponse  {
-	base.BaseResponse response = 1;
 }
