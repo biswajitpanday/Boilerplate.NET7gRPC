@@ -1,0 +1,24 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+import "Protos/base.proto";
+
+option csharp_namespace = "GRPC.NET7.Api.Protos";
+package user;
+
+service User {
+	rpc Create(UserCreateRequest) returns (UserCreateResponse) {
+		option (google.api.http) = {
+			post: "/v1/user"
+		};
+	}
+}
+
+message UserCreateRequest {
+	string firstName = 1;
+	string lastName = 2;
+	string email = 3;
+}
+
+message UserCreateResponse  {
+	base.BaseResponse response = 1;
+}

@@ -27,7 +27,8 @@ builder.AddBusinessServices();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.AppUseSwagger();
-app.MapGrpcService<GreeterService>();
+//app.MapGrpcService<GreeterService>();
+app.MapGrpcService<UserService>();
 app.MapGrpcReflectionService();
 app.UseAuthentication();
 app.UseAuthorization();

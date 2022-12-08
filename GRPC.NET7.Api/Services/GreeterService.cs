@@ -1,7 +1,4 @@
-using GRPC.NET7.Core.Interfaces.Repositories;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+using GRPC.NET7.Api.Protos;
 
 namespace GRPC.NET7.Api.Services;
 
@@ -20,7 +17,7 @@ public class GreeterService : Greeter.GreeterBase
     public override async Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
         var faker = new Faker();
-        var user = new User
+        var user = new UserEntity
         {
             Email = faker.Person.Email,
             FirstName = faker.Person.FirstName,

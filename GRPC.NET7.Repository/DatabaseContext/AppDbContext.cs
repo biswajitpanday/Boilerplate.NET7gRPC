@@ -42,5 +42,5 @@ public class AppDbContext : DbContext
         }
     }
 
-    public DbSet<User> Users { get; set; } = null!;
+    public DbSet<UserEntity> Users { get; set; } = null!;
 }

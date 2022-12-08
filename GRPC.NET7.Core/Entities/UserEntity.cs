@@ -1,6 +1,8 @@
-﻿namespace GRPC.NET7.Core.Entities;
+﻿using GRPC.NET7.Core.Interfaces.Common;
 
-public class User : BaseEntity
+namespace GRPC.NET7.Core.Entities;
+
+public class UserEntity : BaseEntity
 {
     public string? FirstName { get; set; }
     public string? LastName { get; set; }

@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\base.proto" />
+    <None Remove="Protos\user.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.50.0" />
     <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.50.0" />
@@ -28,7 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+	<Protobuf Include="Protos\base.proto" GrpcServices="Server" />
 	<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+	<Protobuf Include="Protos\user.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

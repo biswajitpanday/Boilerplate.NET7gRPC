@@ -1,12 +1,13 @@
 ﻿using System.Text;
-using GRPC.NET7.Core.Interfaces.Repositories;
+using Google.Api;
+using GRPC.NET7.Core.Interfaces.Services;
 using GRPC.NET7.Repository;
 using GRPC.NET7.Repository.Base;
 using GRPC.NET7.Repository.DatabaseContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using UserService = GRPC.NET7.Service.UserService;
 
 namespace GRPC.NET7.Api.Helpers;
 
@@ -54,9 +55,14 @@ public static class Extension
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
             };
         });
-
+        
         // Authorization
         builder.Services.AddAuthorization();
+
+        // AutoMapper
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain
+            .GetAssemblies()
+            .Where(x => x.FullName!.StartsWith(nameof(GRPC.NET7))));    // ToDo: Change "GRPC.NET7" to "YOUR_PROJECT_BASE_NAMESPACE"
     }
 
     public static void AddBusinessServices(this WebApplicationBuilder builder)
@@ -72,7 +78,7 @@ public static class Extension
 
     public static void AddServices(IServiceCollection services)
     {
-        //services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IUserService, UserService>();
     }
 
     private static void AddRepositories(IServiceCollection services)

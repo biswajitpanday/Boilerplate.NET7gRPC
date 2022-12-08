@@ -5,7 +5,7 @@ using GRPC.NET7.Repository.DatabaseContext;
 
 namespace GRPC.NET7.Repository;
 
-public class UserRepository : BaseRepository<User>, IUserRepository
+public class UserRepository : BaseRepository<UserEntity>, IUserRepository
 {
     public UserRepository(AppDbContext dbContext) : base(dbContext)
     {

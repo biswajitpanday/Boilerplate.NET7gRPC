@@ -2,6 +2,6 @@
 
 namespace GRPC.NET7.Core.Interfaces.Repositories;
 
-public interface IUserRepository : IBaseRepository<User>
+public interface IUserRepository : IBaseRepository<UserEntity>
 {
 }
