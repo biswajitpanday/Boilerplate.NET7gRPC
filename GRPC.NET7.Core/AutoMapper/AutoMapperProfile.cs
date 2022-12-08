@@ -9,7 +9,7 @@ internal class AutoMapperProfile : Profile
     public AutoMapperProfile()
     {
         var assemblies = AppDomain.CurrentDomain.GetAssemblies()
-            .Where(a => a.FullName!.StartsWith(nameof(GRPC))).ToArray();
+            .Where(a => a.FullName!.StartsWith(nameof(GRPC.NET7))).ToArray();
         ApplyMappingsFromAssemblies(assemblies);
     }
 
