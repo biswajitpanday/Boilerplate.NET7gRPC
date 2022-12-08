@@ -1,6 +1,4 @@
-﻿using GRPC.NET7.Core.Interfaces.Common;
-
-namespace GRPC.NET7.Core.Entities;
+﻿namespace GRPC.NET7.Core.Entities;
 
 public class UserEntity : BaseEntity
 {
