@@ -7,9 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Constants\" />
-    <Folder Include="Settings\" />
+    <Compile Remove="Constants\**" />
+    <Compile Remove="Dtos\**" />
+    <Compile Remove="Settings\**" />
+    <EmbeddedResource Remove="Constants\**" />
+    <EmbeddedResource Remove="Dtos\**" />
+    <EmbeddedResource Remove="Settings\**" />
+    <None Remove="Constants\**" />
+    <None Remove="Dtos\**" />
+    <None Remove="Settings\**" />
   </ItemGroup>
 
   <ItemGroup>
