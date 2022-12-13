@@ -1,5 +1,3 @@
-using GRPC.NET7.Api.Protos;
-
 namespace GRPC.NET7.Api.Services;
 
 [Authorize]

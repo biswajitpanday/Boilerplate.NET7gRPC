@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\authentication.proto" />
     <None Remove="Protos\base.proto" />
+    <None Remove="Protos\calculation.proto" />
     <None Remove="Protos\user.proto" />
   </ItemGroup>
 
@@ -26,6 +28,7 @@
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,7 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+	<Protobuf Include="Protos\authentication.proto" GrpcServices="Server">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Protobuf>
 	<Protobuf Include="Protos\base.proto" GrpcServices="Server" />
+	<Protobuf Include="Protos\calculation.proto" GrpcServices="Server" />
 	<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 	<Protobuf Include="Protos\user.proto" GrpcServices="Server" />
   </ItemGroup>

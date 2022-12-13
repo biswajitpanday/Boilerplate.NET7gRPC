@@ -1,5 +1,4 @@
-﻿using GRPC.NET7.Api.Protos;
-using GRPC.NET7.Core.Interfaces.Services;
+﻿using GRPC.NET7.Core.Interfaces.Services;
 
 namespace GRPC.NET7.Api.Services;
 
@@ -13,6 +12,7 @@ public class UserService : User.UserBase
     }
     public override async Task<BaseResponse> Create(UserCreateRequest request, ServerCallContext context)
     {
+        //var d = request.DateOfBirth.ToDateTime();
         var user = CustomMapper.Map<UserCreateRequest, UserEntity>(request);
         var response = await _userService.CreateUser(user);
         return ServiceResponse.Created(response.ToString());

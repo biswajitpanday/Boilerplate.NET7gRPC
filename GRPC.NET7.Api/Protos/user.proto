@@ -18,6 +18,6 @@ message UserCreateRequest {
 	string firstName = 1;
 	string lastName = 2;
 	string email = 3;
-	google.protobuf.Timestamp dateOfBirth = 4;
+	//google.protobuf.Timestamp dateOfBirth = 4;
 	string gender = 5;
 }

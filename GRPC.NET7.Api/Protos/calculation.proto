@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+
+option csharp_namespace = "GRPC.NET7.Api.Protos";
+package calculation;
+
+service Calculation {
+  rpc Add (InputNumbers) returns (CalculationResult) {
+	  option (google.api.http) = {
+		  get: "/v1/calculation/add"
+	  };
+  }
+
+  rpc Subtract (InputNumbers) returns (CalculationResult) {
+	  option (google.api.http) = {
+		  get: "/v1/calculation/subtract"
+	  };
+  }
+
+  rpc Multiply (InputNumbers) returns (CalculationResult) {
+	  option (google.api.http) = {
+		  get: "/v1/calculation/multiply"
+	  };
+  }
+}
+
+message InputNumbers {
+  int32 number1 = 1;
+  int32 number2 = 2;
+}
+
+message CalculationResult {
+  int32 result = 1;
+}
