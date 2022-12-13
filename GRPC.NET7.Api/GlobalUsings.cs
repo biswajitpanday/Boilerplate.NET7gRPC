@@ -6,6 +6,7 @@ global using Grpc.Core.Interceptors;
 global using Microsoft.Data.SqlClient;
 global using Microsoft.OpenApi.Models;
 global using Bogus;
+global using GRPC.NET7.Api.Protos;
 global using GRPC.NET7.Core.Entities;
 global using GRPC.NET7.Core.Interfaces.Repositories;
 global using Microsoft.AspNetCore.Authorization;
