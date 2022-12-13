@@ -1,13 +1,23 @@
 ﻿using GRPC.NET7.Core.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace GRPC.NET7.Repository.DatabaseContext;
 
 public class AppDbContext : DbContext
 {
+    private readonly ILoggerFactory _loggerFactory = new LoggerFactory();
+
     public AppDbContext(DbContextOptions<AppDbContext> context) : base(context)
     {
 
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseLoggerFactory(_loggerFactory);
+        optionsBuilder.UseSqlServer().LogTo(Console.WriteLine).EnableDetailedErrors();
+        base.OnConfiguring(optionsBuilder);
     }
 
     public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
