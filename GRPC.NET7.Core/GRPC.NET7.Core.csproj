@@ -7,14 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Constants\**" />
-    <Compile Remove="Dtos\**" />
     <Compile Remove="Settings\**" />
-    <EmbeddedResource Remove="Constants\**" />
-    <EmbeddedResource Remove="Dtos\**" />
     <EmbeddedResource Remove="Settings\**" />
-    <None Remove="Constants\**" />
-    <None Remove="Dtos\**" />
     <None Remove="Settings\**" />
   </ItemGroup>
 
@@ -24,6 +18,10 @@
     <PackageReference Include="DotNetCore.EntityFrameworkCore" Version="17.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Constants\" />
   </ItemGroup>
 
 </Project>

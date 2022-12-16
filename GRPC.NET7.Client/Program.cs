@@ -1,6 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
+using GRPC.NET7.Api.Protos;
 using GRPC.NET7.Client.Protos;
 
 Console.WriteLine("Hello, World!");
@@ -18,7 +19,9 @@ var authenticationResponse = authenticationClient.Authenticate(new Authenticatio
 
 Console.WriteLine($"Received Authentication Response - \nToken: {authenticationResponse.AccessToken}\nExpires In: {authenticationResponse.ExpiresIn}");
 
-//var calculationClient = new calculatio
+//var userClient = new User.UserClient(channel);
+//var userResponse = await userClient.GetAsync(new Empty());
+//Console.WriteLine($"Received UserResponse - \nIsSuccess: {userResponse.IsSuccess}\nMessage: {userResponse.Message}\nData: {userResponse.Data}");
 
 
 Console.ReadKey();

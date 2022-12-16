@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <None Remove="Protos\authentication.proto" />
+    <None Remove="Protos\base.proto" />
+    <None Remove="Protos\user.proto" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +26,8 @@
     <Protobuf Include="Protos\authentication.proto" GrpcServices="Client">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Protobuf>
+    <Protobuf Include="Protos\base.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\user.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

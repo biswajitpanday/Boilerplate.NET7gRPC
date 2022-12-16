@@ -1,5 +1,4 @@
 syntax = "proto3";
-import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 import "Protos/base.proto";
@@ -8,17 +7,8 @@ option csharp_namespace = "GRPC.NET7.Api.Protos";
 package user;
 
 service User {
-	rpc Create(UserCreateRequest) returns (base.BaseResponse) {
-		option (google.api.http) = {
-			post: "/v1/user"
-		};
-	}
-
-	rpc Get(google.protobuf.Empty) returns (base.BaseResponse) {
-		option (google.api.http) = {
-			get: "/v1/user"
-		};
-	}
+	rpc Create(UserCreateRequest) returns (base.BaseResponse) {	}
+	rpc Get(google.protobuf.Empty) returns (base.BaseResponse) { }
 }
 
 message UserCreateRequest {

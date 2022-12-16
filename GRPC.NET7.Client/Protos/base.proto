@@ -1,0 +1,10 @@
+syntax = "proto3";
+option csharp_namespace = "GRPC.NET7.Api.Protos";
+package base;
+
+
+message BaseResponse {
+	bool isSuccess = 1;
+	string message = 2;
+	string data = 3;
+}
