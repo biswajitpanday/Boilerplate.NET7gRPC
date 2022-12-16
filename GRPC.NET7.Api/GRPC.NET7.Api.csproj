@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protos\authentication.proto" />
     <None Remove="Protos\base.proto" />
     <None Remove="Protos\calculation.proto" />
     <None Remove="Protos\user.proto" />
@@ -32,13 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GRPC.NET7.Proto\GRPC.NET7.Proto.csproj" />
     <ProjectReference Include="..\GRPC.NET7.Service\GRPC.NET7.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-	<Protobuf Include="Protos\authentication.proto" GrpcServices="Server">
-	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Protobuf>
 	<Protobuf Include="Protos\base.proto" GrpcServices="Server" />
 	<Protobuf Include="Protos\calculation.proto" GrpcServices="Server" />
 	<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />

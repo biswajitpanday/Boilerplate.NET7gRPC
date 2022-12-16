@@ -8,24 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protos\authentication.proto" />
     <None Remove="Protos\base.proto" />
     <None Remove="Protos\user.proto" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.21.11" />
     <PackageReference Include="Grpc.Net.Client" Version="2.50.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.51.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\authentication.proto" GrpcServices="Client">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Protobuf>
+    <ProjectReference Include="..\GRPC.NET7.Proto\GRPC.NET7.Proto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="Protos\base.proto" GrpcServices="Client" />
     <Protobuf Include="Protos\user.proto" GrpcServices="Client" />
   </ItemGroup>

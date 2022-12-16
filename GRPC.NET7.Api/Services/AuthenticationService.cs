@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Options;
+﻿using GRPC.NET7.Proto;
+using Microsoft.Extensions.Options;
+using ProtoBuf.Grpc;
 
 namespace GRPC.NET7.Api.Services;
 
-public class AuthenticationService : Authentication.AuthenticationBase
+public class AuthenticationService : IAuthenticationService
 {
     private readonly IOptions<AppSettings> _appSettings;
 
@@ -10,7 +12,8 @@ public class AuthenticationService : Authentication.AuthenticationBase
     {
         _appSettings = appSettings;
     }
-    public override Task<AuthenticationResponse> Authenticate(AuthenticationRequest request, ServerCallContext context)
+
+    public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request, CallContext context = default)
     {
         var authenticationResponse = JwtAuthenticationManager.Authenticate(_appSettings, request);
         if (authenticationResponse == null)
