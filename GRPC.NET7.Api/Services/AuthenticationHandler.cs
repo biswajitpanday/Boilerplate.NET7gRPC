@@ -4,11 +4,11 @@ using ProtoBuf.Grpc;
 
 namespace GRPC.NET7.Api.Services;
 
-public class AuthenticationService : IAuthenticationService
+public class AuthenticationHandler : IAuthenticationService
 {
     private readonly IOptions<AppSettings> _appSettings;
 
-    public AuthenticationService(IOptions<AppSettings> appSettings)
+    public AuthenticationHandler(IOptions<AppSettings> appSettings)
     {
         _appSettings = appSettings;
     }
@@ -17,7 +17,7 @@ public class AuthenticationService : IAuthenticationService
     {
         var authenticationResponse = JwtAuthenticationManager.Authenticate(_appSettings, request);
         if (authenticationResponse == null)
-            throw new RpcException(new Status(StatusCode.Unauthenticated, "Invalid User Credentials"));
+            throw new RpcException(new Status(StatusCode.Unauthenticated, "Invalid ProtoUserResponse Credentials"));
         return Task.FromResult(authenticationResponse);
     }
 }

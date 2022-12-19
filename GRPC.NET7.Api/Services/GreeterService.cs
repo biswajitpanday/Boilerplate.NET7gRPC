@@ -28,7 +28,7 @@ public class GreeterService : Greeter.GreeterBase
 
         return await Task.FromResult(new HelloReply
         {
-            Message = $"An User is Created {request.Name}. User : {JsonConvert.SerializeObject(users, Formatting.None)}"
+            Message = $"An ProtoUserResponse is Created {request.Name}. ProtoUserResponse : {JsonConvert.SerializeObject(users, Formatting.None)}"
         });
     }
 }

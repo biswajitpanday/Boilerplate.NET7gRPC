@@ -11,4 +11,8 @@
     <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.179" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GRPC.NET7.Core\GRPC.NET7.Core.csproj" />
+  </ItemGroup>
+
 </Project>

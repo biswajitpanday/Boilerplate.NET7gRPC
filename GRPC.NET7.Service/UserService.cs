@@ -1,5 +1,4 @@
-﻿using GRPC.NET7.Core.Dtos;
-using GRPC.NET7.Core.Entities;
+﻿using GRPC.NET7.Core.Entities;
 using GRPC.NET7.Core.Interfaces.Repositories;
 using GRPC.NET7.Core.Interfaces.Services;
 
@@ -25,5 +24,11 @@ public class UserService : IUserService
     {
         var users = await _userRepository.ListAsync();
         return users;
+    }
+
+    public async Task<UserEntity> GetAsync(Guid id)
+    {
+        var user = await _userRepository.GetAsync(id);
+        return user;
     }
 }

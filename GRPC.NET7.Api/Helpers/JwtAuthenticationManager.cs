@@ -13,7 +13,7 @@ public static class JwtAuthenticationManager
     {
         // Implement DbCheck ----
         if (authenticationRequest.UserName != "admin" || authenticationRequest.Password != "admin")
-            throw new RpcException(new Status(StatusCode.Unauthenticated, "Invalid User Credentials"));
+            throw new RpcException(new Status(StatusCode.Unauthenticated, "Invalid ProtoUserResponse Credentials"));
 
         var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
         var tokenKey = Encoding.ASCII.GetBytes(appSettings.Value.Secret);

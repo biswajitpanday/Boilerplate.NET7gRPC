@@ -1,12 +1,10 @@
-﻿using System.Text;
+﻿using GRPC.NET7.Core.AutoMapper;
 using GRPC.NET7.Core.Interfaces.Services;
 using GRPC.NET7.Repository;
 using GRPC.NET7.Repository.Base;
 using GRPC.NET7.Repository.DatabaseContext;
-//using Microsoft.AspNetCore.Authentication.JwtBearer;
-//using Microsoft.IdentityModel.Tokens;
+using GRPC.NET7.Service;
 using Serilog;
-using UserService = GRPC.NET7.Service.UserService;
 
 namespace GRPC.NET7.Api.Helpers;
 
@@ -18,25 +16,16 @@ public static class Extension
     public static void AddInfrastructureServices(this WebApplicationBuilder builder)
     {
         // Swagger, Serilog, DBContext, Identity, Jwt, Authentication, Authorization, <IDatetime, DateTimeService>
-
         RegisterSwagger(builder);
-
         RegisterSerilog(builder);
-
         RegisterDatabaseContext(builder);
-
         RegisterJwtAuthentication(builder);
-        
-        builder.Services.AddAuthorization();
-
         RegisterAutoMapper(builder);
     }
-    
-
     public static void AddBusinessServices(this WebApplicationBuilder builder)
     {
-        AddRepositories(builder.Services);
-        AddServices(builder);
+        RegisterRepositoryDependencies(builder.Services);
+        RegisterServiceDependencies(builder);
     }
 
     #endregion
@@ -44,28 +33,25 @@ public static class Extension
 
     #region Private Methods
 
-    public static void AddServices(WebApplicationBuilder builder)
+    public static void RegisterServiceDependencies(WebApplicationBuilder builder)
     {
         builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("Jwt"));
         builder.Services.AddTransient<IUserService, UserService>();
     }
 
-    private static void AddRepositories(IServiceCollection services)
+    private static void RegisterRepositoryDependencies(IServiceCollection services)
     {
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
         services.AddScoped<IUserRepository, UserRepository>();
     }
 
 
-
     private static void RegisterAutoMapper(WebApplicationBuilder builder)
     {
-        builder.Services.AddAutoMapper(AppDomain.CurrentDomain
-            .GetAssemblies()
-            .Where(x => x.FullName!.StartsWith(
-                nameof(GRPC.NET7)))); // ToDo: Change "GRPC.NET7" to "YOUR_PROJECT_BASE_NAMESPACE"
+        var assemblies = new AutoMapperProfile().GetListOfEntryAssemblyWithReferences();
+        builder.Services.AddAutoMapper(assemblies);
     }
-
+    
     private static void RegisterJwtAuthentication(WebApplicationBuilder builder)
     {
         //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
@@ -125,5 +111,10 @@ public static class Extension
         });
     }
 
+    public static void MapGrpcServices(this WebApplication app)
+    {
+        app.MapGrpcService<UserHandler>();
+        app.MapGrpcService<AuthenticationHandler>();
+    }
     #endregion
 }

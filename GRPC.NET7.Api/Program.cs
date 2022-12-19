@@ -43,20 +43,17 @@ builder.Services.AddCodeFirstGrpc();
 
 builder.AddInfrastructureServices();
 builder.AddBusinessServices();
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.AppUseSwagger();
-//app.MapGrpcService<GreeterService>();
-
 app.MapGrpcReflectionService();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGrpcService<UserService>();
-app.MapGrpcService<AuthenticationService>();
+app.MapGrpcServices();
 
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-
 app.Run();
