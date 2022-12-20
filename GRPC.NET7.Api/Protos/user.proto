@@ -19,6 +19,12 @@ service User {
 			get: "/v1/user"
 		};
 	}
+
+	//rpc GetById(UserGetByIdRequest) returns (base.BaseResponse) {
+	//	option (google.api.http) = {
+	//		get: "/v1/user"
+	//	};
+	//}
 }
 
 message UserCreateRequest {
@@ -27,4 +33,8 @@ message UserCreateRequest {
 	string email = 3;
 	//google.protobuf.Timestamp dateOfBirth = 4;
 	string gender = 5;
+}
+
+message UserGetByIdRequest {
+	string id = 1;
 }
