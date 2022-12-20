@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\authentication.proto" />
+    <None Remove="Protos\base.proto" />
+    <None Remove="Protos\calculation.proto" />
+    <None Remove="Protos\greet.proto" />
+    <None Remove="Protos\user.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.12" />
+    <PackageReference Include="Grpc.Tools" Version="2.51.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\authentication.proto" />
+    <Protobuf Include="Protos\base.proto" />
+    <Protobuf Include="Protos\calculation.proto" />
+    <Protobuf Include="Protos\greet.proto" />
+    <Protobuf Include="Protos\user.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Protos\authentication.proto" />
+    <None Update="Protos\base.proto" />
+    <None Update="Protos\calculation.proto" />
+    <None Update="Protos\greet.proto" />
+    <None Update="Protos\user.proto" />
+  </ItemGroup>
+
+</Project>

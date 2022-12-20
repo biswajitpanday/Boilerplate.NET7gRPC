@@ -1,7 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
-using GRPC.NET7.Api.Protos;
-using GRPC.NET7.Client.Protos;
+using GRPC.NET7.Proto.Protos;
 using Newtonsoft.Json;
 
 namespace GRPC.NET7.Client.Helpers;

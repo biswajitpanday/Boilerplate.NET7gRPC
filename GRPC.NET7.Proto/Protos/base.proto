@@ -1,5 +1,6 @@
 syntax = "proto3";
-option csharp_namespace = "GRPC.NET7.Api.Protos";
+option csharp_namespace = "GRPC.NET7.Proto.Protos";
+
 package base;
 
 

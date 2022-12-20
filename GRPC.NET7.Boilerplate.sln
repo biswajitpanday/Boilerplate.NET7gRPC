@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRPC.NET7.Service", "GRPC.N
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{BF2F41AC-8958-44F3-A35E-21504A1E33C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRPC.NET7.Client", "GRPC.NET7.Client\GRPC.NET7.Client.csproj", "{7A9425D3-DF6F-4864-931B-92A10207B896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRPC.NET7.Client", "GRPC.NET7.Client\GRPC.NET7.Client.csproj", "{7A9425D3-DF6F-4864-931B-92A10207B896}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedProto", "SharedProto", "{4F44EDB8-ACEA-4B1D-AAA3-A445D4FDBCA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRPC.NET7.Proto", "GRPC.NET7.Proto\GRPC.NET7.Proto.csproj", "{0331F12E-78E4-42A2-B992-F48B176BF5E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +45,17 @@ Global
 		{7A9425D3-DF6F-4864-931B-92A10207B896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A9425D3-DF6F-4864-931B-92A10207B896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A9425D3-DF6F-4864-931B-92A10207B896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0331F12E-78E4-42A2-B992-F48B176BF5E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0331F12E-78E4-42A2-B992-F48B176BF5E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0331F12E-78E4-42A2-B992-F48B176BF5E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0331F12E-78E4-42A2-B992-F48B176BF5E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7A9425D3-DF6F-4864-931B-92A10207B896} = {BF2F41AC-8958-44F3-A35E-21504A1E33C5}
+		{0331F12E-78E4-42A2-B992-F48B176BF5E5} = {4F44EDB8-ACEA-4B1D-AAA3-A445D4FDBCA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F172D321-6172-486F-B708-51769775F2EC}

@@ -1,7 +1,8 @@
 syntax = "proto3";
 import "google/api/annotations.proto";
 
-option csharp_namespace = "GRPC.NET7.Api.Protos";
+option csharp_namespace = "GRPC.NET7.Proto.Protos";
+
 package greet;
 
 service Greeter {

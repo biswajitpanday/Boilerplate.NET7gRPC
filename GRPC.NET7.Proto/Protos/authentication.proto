@@ -1,11 +1,16 @@
 syntax = "proto3";
+import "google/api/annotations.proto";
 
-option csharp_namespace = "GRPC.NET7.Client.Protos";
+option csharp_namespace = "GRPC.NET7.Proto.Protos";
 package authentication;
 
 
 service Authentication {
-	rpc Authenticate(AuthenticationRequest) returns (AuthenticationResponse) { }
+	rpc Authenticate(AuthenticationRequest) returns (AuthenticationResponse) {
+		option (google.api.http) = {
+			post: "/v1/authenticate"
+		};
+	}
 }
 
 message AuthenticationRequest {

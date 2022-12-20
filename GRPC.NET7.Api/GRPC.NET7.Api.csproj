@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protos\authentication.proto" />
-    <None Remove="Protos\base.proto" />
-    <None Remove="Protos\calculation.proto" />
-    <None Remove="Protos\user.proto" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.50.0" />
     <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.50.0" />
@@ -25,6 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="7.0.0" />
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
@@ -32,17 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GRPC.NET7.Proto\GRPC.NET7.Proto.csproj" />
     <ProjectReference Include="..\GRPC.NET7.Service\GRPC.NET7.Service.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-	<Protobuf Include="Protos\authentication.proto" GrpcServices="Server">
-	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Protobuf>
-	<Protobuf Include="Protos\base.proto" GrpcServices="Server" />
-	<Protobuf Include="Protos\calculation.proto" GrpcServices="Server" />
-	<Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-	<Protobuf Include="Protos\user.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>
