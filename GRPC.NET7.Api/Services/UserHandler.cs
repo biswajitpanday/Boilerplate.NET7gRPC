@@ -14,26 +14,7 @@ public class UserHandler : IProtoUserService
         _mapper = mapper;
         _userService = userService;
     }
-    //public override async Task<BaseResponse> Create(UserCreateRequest request, ServerCallContext context)
-    //{
-    //    //var d = request.DateOfBirth.ToDateTime();
-    //    var user = CustomMapper.Map<UserCreateRequest, UserEntity>(request);
-    //    var response = await _userService.CreateUser(user);
-    //    return ServiceResponse.Created(response.ToString());
-    //}
 
-    //public override async Task<BaseResponse> GetAsync(Empty request, ServerCallContext context)
-    //{
-    //    var users = await _userService.GetAsync();
-    //    var result = new BaseResponseDto<List<UserEntity>>
-    //    {
-    //        IsSuccess = true,
-    //        Message = string.Empty,
-    //        Data = users.ToList()
-    //    };
-    //    var mapped = CustomMapper.Map<BaseResponseDto<List<UserEntity>>, BaseResponse>(result);
-    //    return mapped;
-    //}
     public async Task<string> Create(UserCreateRequest userCreateRequest)
     {
         var user = CustomMapper.Map<UserCreateRequest, UserEntity>(userCreateRequest);
@@ -42,11 +23,13 @@ public class UserHandler : IProtoUserService
         return response.ToString();
     }
 
-    public async ValueTask<UserListResponse> GetAsync()
+    public async ValueTask<byte[]> GetAsync()
     {
         var users = await _userService.GetAsync();
-        var mapped = _mapper.Map<UserListResponse>(users.ToList());
-        return (UserListResponse)mapped;
+        var mapped = _mapper.Map<List<UserResponse>>(users.ToList());
+        using var ms = new MemoryStream();
+        JsonConvert.SerializeObject(mapped);
+        return ms.ToArray();
     }
 
     public async ValueTask<UserResponse> GetAsync(string id)

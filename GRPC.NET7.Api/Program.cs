@@ -1,7 +1,10 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
+using ProtoBuf.Grpc.Configuration;
 using ProtoBuf.Grpc.Server;
+using CompressionLevel = System.IO.Compression.CompressionLevel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,35 +13,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-    options.RequireHttpsMetadata = false;   // In Production RequireHttpsMetadata will be true
-    options.SaveToken = true;
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetSection("Jwt").GetSection("Secret").Value)),
-        ValidateIssuer = false,
-        ValidateAudience = false,
-    };
-});
-builder.Services.AddAuthorization();
+
 
 // Start: gRPC Configurations
 builder.Services.AddGrpc(options =>
 {
     options.Interceptors.Add<LoggerInterceptor>();
     options.Interceptors.Add<ExceptionInterceptor>();
-    
+
 });
 builder.Services.AddGrpcReflection();
 builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AddGrpcSwagger();
-builder.Services.AddCodeFirstGrpc();
+builder.Services.AddCodeFirstGrpc(config =>
+{
+    config.ResponseCompressionLevel = CompressionLevel.Optimal;
+});
+//builder.Services.TryAddSingleton(BinderConfiguration.Create(
+//    binder: new ServiceBinderWithServiceResolutionFromServiceCollection(builder.Services)));
+//builder.Services.AddCodeFirstGrpcReflection();
 // End: gRPC Configurations
 
 builder.AddInfrastructureServices();

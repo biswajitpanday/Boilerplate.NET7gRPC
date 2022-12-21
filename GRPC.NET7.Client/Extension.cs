@@ -25,12 +25,7 @@ public static class Extension
                         await Authenticate(channel);
                         break;
                     case 2:
-                        await UserGetAsync(channel);
-                        break;
-                    case 3:
                         await UserGetByIdAsync(channel);
-                        break;
-                    default:
                         break;
                 }
 
@@ -55,13 +50,6 @@ public static class Extension
         });
 
         Console.WriteLine($"Received Authentication Response - \nToken: {authenticationResponse.AccessToken}\nExpires In: {authenticationResponse.ExpiresIn}");
-    }
-
-    public static async Task UserGetAsync(GrpcChannel grpcChannel)
-    {
-        var userClient = grpcChannel.CreateGrpcService<IProtoUserService>();
-        var userResponse = await userClient.GetAsync();
-        Console.WriteLine($"Received List<UserResponse> - {JsonConvert.SerializeObject(userResponse)}");
     }
 
     public static async Task UserGetByIdAsync(GrpcChannel grpcChannel)

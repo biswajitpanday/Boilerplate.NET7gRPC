@@ -4,7 +4,10 @@ using GRPC.NET7.Repository;
 using GRPC.NET7.Repository.Base;
 using GRPC.NET7.Repository.DatabaseContext;
 using GRPC.NET7.Service;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
 
 namespace GRPC.NET7.Api.Helpers;
 
@@ -19,7 +22,7 @@ public static class Extension
         RegisterSwagger(builder);
         RegisterSerilog(builder);
         RegisterDatabaseContext(builder);
-        RegisterJwtAuthentication(builder);
+        RegisterAuthentication(builder);
         RegisterAutoMapper(builder);
     }
     public static void AddBusinessServices(this WebApplicationBuilder builder)
@@ -52,17 +55,24 @@ public static class Extension
         builder.Services.AddAutoMapper(assemblies);
     }
     
-    private static void RegisterJwtAuthentication(WebApplicationBuilder builder)
+    private static void RegisterAuthentication(WebApplicationBuilder builder)
     {
-        //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
-        //{
-        //    opt.TokenValidationParameters = new TokenValidationParameters
-        //    {
-        //        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        //        ValidAudience = builder.Configuration["Jwt:Audience"],
-        //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
-        //    };
-        //});
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;   // In Production RequireHttpsMetadata will be true
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetSection("Jwt").GetSection("Secret").Value)),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+            };
+        });
     }
 
     private static void RegisterDatabaseContext(WebApplicationBuilder builder)
