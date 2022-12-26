@@ -14,6 +14,9 @@ public class User
 public interface IProtoUserService
 {
     [OperationContract]
+    ValueTask<string> Create(UserCreateRequest userCreateRequest);
+
+    [OperationContract]
     ValueTask<UserResponse> GetByIdAsync(string id);
 
     [OperationContract]
@@ -33,10 +36,12 @@ public class UserResponse : IMapFrom<UserEntity>
 }
 
 [ProtoContract]
-public class UserCreateRequest
+public class UserCreateRequest : IMapFrom<UserEntity>
 {
     [ProtoMember(1)] 
     public string? FirstName { get; set; }
     [ProtoMember(2)] 
     public string? LastName { get; set; }
+    [ProtoMember(3)]
+    public string? Email { get; set; }
 }

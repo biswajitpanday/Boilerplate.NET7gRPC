@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using Bogus;
+using Grpc.Net.Client;
 using GRPC.NET7.Proto;
 using Newtonsoft.Json;
 using ProtoBuf.Grpc.Client;
@@ -25,9 +26,12 @@ public static class Extension
                         await Authenticate(channel);
                         break;
                     case 2:
-                        await UserGetByIdAsync(channel);
+                        await Create(channel);
                         break;
                     case 3:
+                        await UserGetByIdAsync(channel);
+                        break;
+                    case 4:
                         await UserListAsync(channel);
                         break;
                 }
@@ -51,8 +55,21 @@ public static class Extension
             UserName = "admin",
             Password = "admin"
         });
-
         Console.WriteLine($"Received Authentication Response - \nToken: {authenticationResponse.AccessToken}\nExpires In: {authenticationResponse.ExpiresIn}");
+    }
+
+    private static async Task Create(GrpcChannel grpcChannel)
+    {
+        var userClient = grpcChannel.CreateGrpcService<IProtoUserService>();
+        var faker = new Faker();
+        var userCreateRequest = new UserCreateRequest
+        {
+            FirstName = faker.Person.FirstName,
+            LastName = faker.Person.LastName,
+            Email = faker.Person.Email
+        };
+        var userResponse = await userClient.Create(userCreateRequest);
+        Console.WriteLine($"An User is Created. UserId: {userResponse}");
     }
 
     public static async Task UserGetByIdAsync(GrpcChannel grpcChannel)

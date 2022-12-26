@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Grpc.Net.Client" Version="2.50.0" />
   </ItemGroup>
 

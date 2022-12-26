@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using GRPC.NET7.Core.Interfaces.Services;
 using GRPC.NET7.Proto;
-using GRPC.NET7.Proto.Helpers;
 
 namespace GRPC.NET7.Api.Services;
 
@@ -16,10 +15,10 @@ public class UserHandler : IProtoUserService
         _userService = userService;
     }
 
-    public async Task<string> Create(UserCreateRequest userCreateRequest)
+    public async ValueTask<string> Create(UserCreateRequest userCreateRequest)
     {
         var user = CustomMapper.Map<UserCreateRequest, UserEntity>(userCreateRequest);
-        var response = await _userService.CreateUser(user);
+        var response = await _userService.CreateUser(user); 
         //return ServiceResponse.Created(response.ToString());
         return response.ToString();
     }
