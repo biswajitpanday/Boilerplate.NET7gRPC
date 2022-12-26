@@ -14,7 +14,10 @@ public class User
 public interface IProtoUserService
 {
     [OperationContract]
-    ValueTask<UserResponse> GetAsync(string id);
+    ValueTask<UserResponse> GetByIdAsync(string id);
+
+    [OperationContract]
+    ValueTask<List<UserResponse>> GetAsync();
 }
 
 

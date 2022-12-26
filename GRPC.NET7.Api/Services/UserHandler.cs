@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GRPC.NET7.Core.Interfaces.Services;
 using GRPC.NET7.Proto;
+using GRPC.NET7.Proto.Helpers;
 
 namespace GRPC.NET7.Api.Services;
 
@@ -23,16 +24,14 @@ public class UserHandler : IProtoUserService
         return response.ToString();
     }
 
-    public async ValueTask<byte[]> GetAsync()
+    public async ValueTask<List<UserResponse>> GetAsync()
     {
         var users = await _userService.GetAsync();
         var mapped = _mapper.Map<List<UserResponse>>(users.ToList());
-        using var ms = new MemoryStream();
-        JsonConvert.SerializeObject(mapped);
-        return ms.ToArray();
+        return mapped;
     }
 
-    public async ValueTask<UserResponse> GetAsync(string id)
+    public async ValueTask<UserResponse> GetByIdAsync(string id)
     {
         var user = await _userService.GetAsync(new Guid(id));
         var mapped = _mapper.Map<UserResponse>(user);

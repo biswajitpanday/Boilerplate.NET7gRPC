@@ -27,6 +27,9 @@ public static class Extension
                     case 2:
                         await UserGetByIdAsync(channel);
                         break;
+                    case 3:
+                        await UserListAsync(channel);
+                        break;
                 }
 
                 if (value == 0)
@@ -55,7 +58,14 @@ public static class Extension
     public static async Task UserGetByIdAsync(GrpcChannel grpcChannel)
     {
         var userClient = grpcChannel.CreateGrpcService<IProtoUserService>();
-        var userResponse = await userClient.GetAsync("ea18f616-30a3-40d2-004d-08dad5931006");
+        var userResponse = await userClient.GetByIdAsync("ea18f616-30a3-40d2-004d-08dad5931006");
+        Console.WriteLine($"Received UserResponse - {JsonConvert.SerializeObject(userResponse)}");
+    }
+
+    public static async Task UserListAsync(GrpcChannel grpcChannel)
+    {
+        var userClient = grpcChannel.CreateGrpcService<IProtoUserService>();
+        var userResponse = await userClient.GetAsync();
         Console.WriteLine($"Received UserResponse - {JsonConvert.SerializeObject(userResponse)}");
     }
 
