@@ -1,8 +1,3 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.IdentityModel.Tokens;
-using ProtoBuf.Grpc.Configuration;
 using ProtoBuf.Grpc.Server;
 using CompressionLevel = System.IO.Compression.CompressionLevel;
 
@@ -20,7 +15,6 @@ builder.Services.AddGrpc(options =>
 {
     options.Interceptors.Add<LoggerInterceptor>();
     options.Interceptors.Add<ExceptionInterceptor>();
-
 });
 builder.Services.AddGrpcReflection();
 builder.Services.AddGrpc().AddJsonTranscoding();

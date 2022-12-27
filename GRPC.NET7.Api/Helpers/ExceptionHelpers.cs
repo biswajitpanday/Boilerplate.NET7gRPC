@@ -1,4 +1,6 @@
-﻿namespace GRPC.NET7.Api.Helpers;
+﻿using ProtoBuf.Grpc;
+
+namespace GRPC.NET7.Api.Helpers;
 
 public static class ExceptionHelpers
 {
@@ -32,9 +34,10 @@ public static class ExceptionHelpers
     private static RpcException HandleRpcException<T>(RpcException exception, ILogger<T> logger, Guid correlationId)
     {
         logger.LogError(exception, $"CorrelationId: {correlationId} - An error occurred");
-        var trailers = exception.Trailers;
-        trailers.Add(CreateTrailers(correlationId)[0]);
-        return new RpcException(new Status(exception.StatusCode, exception.Message), trailers);
+        //var trailers = exception.Trailers;
+        //var d = CreateTrailers(correlationId);
+        //trailers.Add(d[0]);
+        return new RpcException(new Status(exception.StatusCode, exception.Message), CreateTrailers(correlationId));
     }
 
     private static RpcException HandleDefault<T>(Exception exception, ServerCallContext context, ILogger<T> logger, Guid correlationId)

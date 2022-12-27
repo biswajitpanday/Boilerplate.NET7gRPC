@@ -14,13 +14,13 @@ public class User
 public interface IProtoUserService
 {
     [OperationContract]
-    ValueTask<string> Create(UserCreateRequest userCreateRequest);
+    ValueTask<BaseResponse<string>> Create(UserCreateRequest userCreateRequest);
 
     [OperationContract]
-    ValueTask<UserResponse> GetByIdAsync(string id);
+    Task<BaseResponse<UserResponse?>> GetByIdAsync(string id);
 
     [OperationContract]
-    ValueTask<List<UserResponse>> GetAsync();
+    Task<BaseResponse<List<UserResponse>?>> GetAsync();
 }
 
 

@@ -15,25 +15,26 @@ public class UserHandler : IProtoUserService
         _userService = userService;
     }
 
-    public async ValueTask<string> Create(UserCreateRequest userCreateRequest)
+    public async ValueTask<BaseResponse<string>> Create(UserCreateRequest userCreateRequest)
     {
         var user = CustomMapper.Map<UserCreateRequest, UserEntity>(userCreateRequest);
         var response = await _userService.CreateUser(user); 
-        //return ServiceResponse.Created(response.ToString());
-        return response.ToString();
+        return BaseResponse<string>.Created(response.ToString());
     }
 
-    public async ValueTask<List<UserResponse>> GetAsync()
+    public async Task<BaseResponse<List<UserResponse>?>> GetAsync()
     {
         var users = await _userService.GetAsync();
         var mapped = _mapper.Map<List<UserResponse>>(users.ToList());
-        return mapped;
+        return BaseResponse<List<UserResponse>?>.Ok(mapped);
     }
 
-    public async ValueTask<UserResponse> GetByIdAsync(string id)
+    public async Task<BaseResponse<UserResponse?>> GetByIdAsync(string id)
     {
+        if (string.IsNullOrEmpty(id))
+            throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid Parameter"));
         var user = await _userService.GetAsync(new Guid(id));
         var mapped = _mapper.Map<UserResponse>(user);
-        return mapped;
+        return BaseResponse<UserResponse>.Ok(mapped);
     }
 }

@@ -1,6 +1,4 @@
-﻿using GRPC.NET7.Api.Helpers;
-
-namespace GRPC.NET7.Api.Middleware.Interceptors;
+﻿namespace GRPC.NET7.Api.Middleware.Interceptors;
 
 public class ExceptionInterceptor : Interceptor
 {

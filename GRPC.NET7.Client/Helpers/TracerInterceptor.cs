@@ -1,16 +1,19 @@
-﻿// For Client.
-// enhance-your-grpc-client-logs-with-a-generic-logging-interceptor
+﻿// enhance-your-grpc-client-logs-with-a-generic-logging-interceptor
 // https://anthonygiretti.com/2022/08/08/net-6-enhance-your-grpc-client-logs-with-a-generic-logging-interceptor/
 
-namespace GRPC.NET7.Api.Middleware.Interceptors;
+using Grpc.Core;
+using Grpc.Core.Interceptors;
+using Microsoft.Extensions.Logging;
+
+namespace GRPC.NET7.Client.Helpers;
 
 public class TracerInterceptor : Interceptor
 {
     private readonly ILogger<TracerInterceptor> _logger;
 
-    public TracerInterceptor(ILogger<TracerInterceptor> logger)
+    public TracerInterceptor(ILoggerFactory logger)
     {
-        _logger = logger;
+        _logger = logger.CreateLogger<TracerInterceptor>();
     }
 
     public override AsyncClientStreamingCall<TRequest, TResponse> AsyncClientStreamingCall<TRequest, TResponse>(
@@ -65,25 +68,3 @@ public class TracerInterceptor : Interceptor
         return continued;
     }
 }
-
-// How to configure the Interceptor
-
-//var builder = WebApplication.CreateBuilder(args);
-
-//var loggerFactory = LoggerFactory.Create(logging =>
-//{
-//    logging.AddConsole();
-//    logging.SetMinimumLevel(LogLevel.Trace);
-//});
-
-//builder.Services.AddGrpcClient<CountryServiceClient>(o =>
-//    {
-//        o.Address = new Uri("{gRpcServerBaseUri}");
-//    })
-//    .AddInterceptor(() => new TracerInterceptor(loggerFactory.CreateLogger<TracerInterceptor>()));
-
-//var app = builder.Build();
-
-//...
-
-//app.Run();

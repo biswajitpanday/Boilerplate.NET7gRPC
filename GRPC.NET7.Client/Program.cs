@@ -1,12 +1,20 @@
-﻿using Grpc.Net.Client;
+﻿using Grpc.Core.Interceptors;
+using Grpc.Net.Client;
 using GRPC.NET7.Client;
+using GRPC.NET7.Client.Helpers;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Welcome to GRPC.NET7 Client Application.");
 
 const string serverAddress = "https://localhost:7166";
-using var channel = GrpcChannel.ForAddress(serverAddress);
 
-await Extension.ExecutePrograms(channel);
+var loggerFactory = Extension.ConfigureLogger();
+using var channel = GrpcChannel.ForAddress(serverAddress, new GrpcChannelOptions
+{
+    LoggerFactory = loggerFactory
+});
+var invoker = channel.Intercept(new TracerInterceptor(loggerFactory));
+
+await Extension.ExecutePrograms(invoker);
 
 Console.ReadKey();
 await channel.ShutdownAsync();
