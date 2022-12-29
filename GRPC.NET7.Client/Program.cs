@@ -8,6 +8,8 @@ Console.WriteLine("Welcome to GRPC.NET7 Client Application.");
 const string serverAddress = "https://localhost:7166";
 
 var loggerFactory = Extension.ConfigureLogger();
+//var (invoker, channel) = Extension.ConfigureChannel(serverAddress, loggerFactory);
+
 using var channel = GrpcChannel.ForAddress(serverAddress, new GrpcChannelOptions
 {
     LoggerFactory = loggerFactory

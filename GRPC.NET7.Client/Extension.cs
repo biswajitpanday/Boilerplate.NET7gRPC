@@ -30,7 +30,6 @@ public static class Extension
 
     public static async Task ExecutePrograms(CallInvoker callInvoker)
     {
-
         while (true)
         {
             Console.WriteLine("\nEnter 1 to execute Authenticate.\n" +
@@ -44,7 +43,7 @@ public static class Extension
                 switch (value)
                 {
                     case 1:
-                        await Authenticate(callInvoker);
+                        await AuthService.Authenticate(callInvoker);
                         break;
                     case 2:
                         await CreateUser(callInvoker);
@@ -65,17 +64,17 @@ public static class Extension
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                throw;
             }
         }
-
     }
 
 
     #region Private Methods
 
-    private static async Task Authenticate(CallInvoker callInvoker)
+    public static async Task Authenticate(CallInvoker invoker)
     {
-        var authenticationClient = callInvoker.CreateGrpcService<IAuthenticationService>();
+        var authenticationClient = invoker.CreateGrpcService<IAuthenticationService>();
         var authenticationResponse = await authenticationClient.Authenticate(new AuthenticationRequest
         {
             UserName = "admin",
@@ -113,6 +112,6 @@ public static class Extension
         var userResponse = await userClient.GetAsync();
         Console.WriteLine($"Received UserResponse - {JsonConvert.SerializeObject(userResponse)}");
     }
-   
+
     #endregion
 }
