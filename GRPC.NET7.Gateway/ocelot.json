@@ -1,0 +1,57 @@
+{
+  "Routes": [
+    // FROM: https:localhost:5002 TO: profileApi
+    {
+      "DownstreamPathTemplate": "/{path}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        },
+        {
+          "Host": "localhost",
+          "Port": 50022
+        }
+      ],
+      "UptreamPathTemplate": "/profileApi/UserClient.GetAsync",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [
+          "profileApi"
+        ]
+      }
+    },
+    // FROM: https:localhost:5001 TO: identityApi
+    {
+      "DownstreamPathTemplate": "/{path}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UptreamPathTemplate": "/identityApi/{path}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [
+          "identityApi"
+        ]
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl":  "https://localhost:5000"
+  }
+}

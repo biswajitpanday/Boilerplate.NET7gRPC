@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GRPC.NET7.Core\GRPC.NET7.Core.csproj" />
+    <ProjectReference Include="..\GRPC.NET7.Profile.Core\GRPC.NET7.Profile.Core.csproj" />
   </ItemGroup>
 
 </Project>

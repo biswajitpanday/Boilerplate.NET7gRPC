@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
-using GRPC.NET7.Core.Entities;
-using GRPC.NET7.Core.Interfaces.Common;
+using GRPC.NET7.Profile.Core.Entities;
+using GRPC.NET7.Profile.Core.Interfaces.Common;
 using ProtoBuf;
 
 namespace GRPC.NET7.Proto;

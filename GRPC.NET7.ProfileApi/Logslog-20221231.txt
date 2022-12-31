@@ -1,0 +1,22 @@
+2022-12-31 00:51:54.212 +00:00 [WRN] Could not find bind method for GRPC.NET7.Profile.Api.Services.UserHandler.
+2022-12-31 00:51:57.006 +00:00 [INF] RPC services being provided by GRPC.NET7.Profile.Api.Services.UserHandler: 3
+2022-12-31 00:51:57.162 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2022-12-31 00:51:57.189 +00:00 [INF] User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-12-31 00:51:58.792 +00:00 [INF] Now listening on: https://[::]:443
+2022-12-31 00:51:58.793 +00:00 [INF] Now listening on: http://[::]:80
+2022-12-31 00:51:58.795 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-31 00:51:58.798 +00:00 [INF] Hosting environment: Development
+2022-12-31 00:51:58.803 +00:00 [INF] Content root path: /app
+2022-12-31 00:52:01.146 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49157/swagger - -
+2022-12-31 00:52:01.965 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49157/swagger - - - 404 0 - 831.7347ms
+2022-12-31 00:55:53.168 +00:00 [WRN] Could not find bind method for GRPC.NET7.Profile.Api.Services.UserHandler.
+2022-12-31 00:55:53.637 +00:00 [INF] RPC services being provided by GRPC.NET7.Profile.Api.Services.UserHandler: 3
+2022-12-31 00:55:53.695 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2022-12-31 00:55:53.696 +00:00 [INF] User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-12-31 00:55:54.057 +00:00 [INF] Now listening on: https://[::]:443
+2022-12-31 00:55:54.058 +00:00 [INF] Now listening on: http://[::]:80
+2022-12-31 00:55:54.059 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-31 00:55:54.059 +00:00 [INF] Hosting environment: Development
+2022-12-31 00:55:54.060 +00:00 [INF] Content root path: /app
+2022-12-31 00:55:55.429 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49157/swagger - -
+2022-12-31 00:55:56.262 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49157/swagger - - - 404 0 - 862.4082ms

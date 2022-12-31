@@ -1,0 +1,14 @@
+2022-12-30 20:37:19.082 +00:00 [WRN] Could not find bind method for GRPC.NET7.Profile.Api.Services.UserHandler.
+2022-12-30 20:37:19.935 +00:00 [INF] RPC services being provided by GRPC.NET7.Profile.Api.Services.UserHandler: 3
+2022-12-30 20:37:20.028 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2022-12-30 20:37:20.029 +00:00 [INF] User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-12-30 20:37:20.047 +00:00 [INF] Creating key {7dd4f63b-d966-4bbf-8aba-016fa75f2790} with creation date 2022-12-30 20:37:20Z, activation date 2022-12-30 20:37:20Z, and expiration date 2023-03-30 20:37:20Z.
+2022-12-30 20:37:20.106 +00:00 [WRN] No XML encryptor configured. Key {7dd4f63b-d966-4bbf-8aba-016fa75f2790} may be persisted to storage in unencrypted form.
+2022-12-30 20:37:20.119 +00:00 [INF] Writing data to file '/root/.aspnet/DataProtection-Keys/key-7dd4f63b-d966-4bbf-8aba-016fa75f2790.xml'.
+2022-12-30 20:37:20.883 +00:00 [INF] Now listening on: https://[::]:443
+2022-12-30 20:37:20.885 +00:00 [INF] Now listening on: http://[::]:80
+2022-12-30 20:37:20.891 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-30 20:37:20.892 +00:00 [INF] Hosting environment: Development
+2022-12-30 20:37:20.894 +00:00 [INF] Content root path: /app
+2022-12-30 20:37:22.529 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49157/swagger - -
+2022-12-30 20:37:23.736 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49157/swagger - - - 404 0 - 1210.3028ms

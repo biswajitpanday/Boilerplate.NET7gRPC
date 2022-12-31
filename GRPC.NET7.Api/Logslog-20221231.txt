@@ -1,0 +1,26 @@
+2022-12-31 00:51:57.278 +00:00 [WRN] Could not find bind method for GRPC.NET7.Api.Services.UserHandler.
+2022-12-31 00:51:58.887 +00:00 [INF] RPC services being provided by GRPC.NET7.Api.Services.UserHandler: 3
+2022-12-31 00:51:58.904 +00:00 [WRN] Could not find bind method for GRPC.NET7.Api.Services.AuthenticationHandler.
+2022-12-31 00:51:58.936 +00:00 [INF] RPC services being provided by GRPC.NET7.Api.Services.AuthenticationHandler: 1
+2022-12-31 00:51:59.020 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2022-12-31 00:51:59.023 +00:00 [INF] User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-12-31 00:52:00.009 +00:00 [INF] Now listening on: https://[::]:443
+2022-12-31 00:52:00.021 +00:00 [INF] Now listening on: http://[::]:80
+2022-12-31 00:52:00.025 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-31 00:52:00.034 +00:00 [INF] Hosting environment: Development
+2022-12-31 00:52:00.038 +00:00 [INF] Content root path: /app
+2022-12-31 00:52:03.553 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49159/swagger - -
+2022-12-31 00:52:04.725 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49159/swagger - - - 404 0 - 1191.1945ms
+2022-12-31 00:55:53.619 +00:00 [WRN] Could not find bind method for GRPC.NET7.Api.Services.UserHandler.
+2022-12-31 00:55:54.033 +00:00 [INF] RPC services being provided by GRPC.NET7.Api.Services.UserHandler: 3
+2022-12-31 00:55:54.038 +00:00 [WRN] Could not find bind method for GRPC.NET7.Api.Services.AuthenticationHandler.
+2022-12-31 00:55:54.053 +00:00 [INF] RPC services being provided by GRPC.NET7.Api.Services.AuthenticationHandler: 1
+2022-12-31 00:55:54.098 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2022-12-31 00:55:54.099 +00:00 [INF] User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-12-31 00:55:54.524 +00:00 [INF] Now listening on: https://[::]:443
+2022-12-31 00:55:54.525 +00:00 [INF] Now listening on: http://[::]:80
+2022-12-31 00:55:54.527 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-31 00:55:54.548 +00:00 [INF] Hosting environment: Development
+2022-12-31 00:55:54.549 +00:00 [INF] Content root path: /app
+2022-12-31 00:55:56.586 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49159/swagger - -
+2022-12-31 00:55:56.953 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49159/swagger - - - 404 0 - 370.6524ms

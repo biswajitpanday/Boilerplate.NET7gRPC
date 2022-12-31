@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "IdentityServer": {
+    "SecretApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -8,7 +8,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5229"
+      "applicationUrl": "https://localhost:5002;http://localhost:5101"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -31,8 +31,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:7531",
-      "sslPort": 44357
+      "applicationUrl": "http://localhost:45679",
+      "sslPort": 44377
     }
   }
 }

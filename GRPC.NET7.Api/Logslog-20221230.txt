@@ -1,0 +1,18 @@
+2022-12-30 20:37:20.347 +00:00 [WRN] Could not find bind method for GRPC.NET7.Api.Services.UserHandler.
+2022-12-30 20:37:21.409 +00:00 [INF] RPC services being provided by GRPC.NET7.Api.Services.UserHandler: 3
+2022-12-30 20:37:21.453 +00:00 [WRN] Could not find bind method for GRPC.NET7.Api.Services.AuthenticationHandler.
+2022-12-30 20:37:21.492 +00:00 [INF] RPC services being provided by GRPC.NET7.Api.Services.AuthenticationHandler: 1
+2022-12-30 20:37:21.572 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2022-12-30 20:37:21.579 +00:00 [INF] User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-12-30 20:37:21.620 +00:00 [INF] Creating key {b8a25271-7feb-48fe-bedd-70459df9b2f5} with creation date 2022-12-30 20:37:21Z, activation date 2022-12-30 20:37:21Z, and expiration date 2023-03-30 20:37:21Z.
+2022-12-30 20:37:21.651 +00:00 [WRN] No XML encryptor configured. Key {b8a25271-7feb-48fe-bedd-70459df9b2f5} may be persisted to storage in unencrypted form.
+2022-12-30 20:37:21.661 +00:00 [INF] Writing data to file '/root/.aspnet/DataProtection-Keys/key-b8a25271-7feb-48fe-bedd-70459df9b2f5.xml'.
+2022-12-30 20:37:22.719 +00:00 [INF] Now listening on: https://[::]:443
+2022-12-30 20:37:22.721 +00:00 [INF] Now listening on: http://[::]:80
+2022-12-30 20:37:22.729 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-12-30 20:37:22.747 +00:00 [INF] Hosting environment: Development
+2022-12-30 20:37:22.756 +00:00 [INF] Content root path: /app
+2022-12-30 20:37:23.910 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49159/swagger - -
+2022-12-30 20:37:24.340 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49159/swagger - - - 404 0 - 435.7876ms
+2022-12-30 20:37:43.479 +00:00 [INF] Request starting HTTP/2 GET https://localhost:49159/swagger - -
+2022-12-30 20:37:43.502 +00:00 [INF] Request finished HTTP/2 GET https://localhost:49159/swagger - - - 404 0 - 20.6464ms
