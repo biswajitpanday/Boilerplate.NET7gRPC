@@ -1,5 +1,5 @@
 
-# GRPC.NET7.Boilerplate
+# ProtoCore.NET
 
 ## Overview
 
@@ -12,7 +12,7 @@ This project is a boilerplate for building gRPC-based services using .NET 7. It 
 Here is the detailed structure of the solution:
 
 ```
-Solution 'GRPC.NET7.Boilerplate' (6 of 6 projects)
+Solution 'ProtoCore.NET' (6 of 6 projects)
 |
 ├── GitHub Actions
 ├── External Sources
@@ -165,7 +165,7 @@ Follow these steps to set up and run the application:
 
 2. **Open the Solution**:
 
-   - Open the solution file (`GRPC.NET7.Boilerplate.sln`) in Visual Studio.
+   - Open the solution file (`ProtoCore.NET.sln`) in Visual Studio.
 
 3. **Configure Database**:
 
