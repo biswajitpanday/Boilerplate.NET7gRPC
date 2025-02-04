@@ -32,7 +32,7 @@ public class UserHandler : IProtoUserService
     public async Task<BaseResponse<UserResponse?>> GetByIdAsync(string id)
     {
         if (string.IsNullOrEmpty(id) || !Guid.TryParse(id, out _))
-            throw new RpcException(new Status(StatusCode.InvalidArgument, "Invalid ID: It is either empty or not a valid GUID."));
+            return BaseResponse<UserResponse?>.Failed(null, message: "Invalid ID: It is either empty or not a valid GUID.");
         var user = await _userService.GetAsync(new Guid(id));
         var mapped = _mapper.Map<UserResponse>(user);
         return BaseResponse<UserResponse>.Ok(mapped);

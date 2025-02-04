@@ -25,17 +25,16 @@ public class LoggerInterceptor : Interceptor
         catch (SqlException e)
         {
             _logger.LogError(e, $"An SQL error occurred when calling {context.Method}");
-            Status status;
+            Status status = e.Number == -2
+                ? new Status(StatusCode.DeadlineExceeded, $"SQL timeout: {e.Message}")
+                : new Status(StatusCode.Internal, $"SQL error: {e.Message}");
 
-            if (e.Number == -2)
-            {
-                status = new Status(StatusCode.DeadlineExceeded, "SQL timeout");
-            }
-            else
-            {
-                status = new Status(StatusCode.Internal, "SQL error");
-            }
-            throw new RpcException(status);
+            throw new RpcException(status, e.Message);
+        }
+        catch (RpcException e)
+        {
+            _logger.LogError(e, $"gRPC error when calling {context.Method}: {e.Status.Detail}");
+            throw;
         }
         catch (Exception e)
         {

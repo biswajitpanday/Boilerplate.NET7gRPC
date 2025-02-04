@@ -8,7 +8,7 @@ namespace ProtoCore.NET.Proto;
 public class BaseResponse<T>
 {
     [ProtoMember(1)]
-    public bool IsSuccess { get; set; } = true;
+    public bool IsSuccess { get; set; }
     [ProtoMember(2)]
     public string? Message { get; set; }
     [ProtoMember(3)]
