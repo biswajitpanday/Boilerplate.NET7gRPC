@@ -1,0 +1,11 @@
+﻿global using ProtoCore.NET.Api.Helpers;
+global using ProtoCore.NET.Api.Middleware.Interceptors;
+global using ProtoCore.NET.Api.Services;
+global using Grpc.Core;
+global using Grpc.Core.Interceptors;
+global using Microsoft.Data.SqlClient;
+global using Microsoft.OpenApi.Models;
+global using ProtoCore.NET.Core.Entities;
+global using ProtoCore.NET.Core.Interfaces.Repositories;
+global using Microsoft.EntityFrameworkCore;
+global using Newtonsoft.Json;

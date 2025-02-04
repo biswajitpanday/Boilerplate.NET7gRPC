@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="protobuf-net.Grpc" Version="1.0.179" />
+    <PackageReference Include="protobuf-net.Grpc.AspNetCore" Version="1.0.179" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProtoCore.NET.Core\ProtoCore.NET.Core.csproj" />
+  </ItemGroup>
+
+</Project>
