@@ -17,7 +17,7 @@ Solution 'ProtoCore.NET' (6 of 6 projects)
 ├── GitHub Actions
 ├── External Sources
 ├── ClientApp
-│   ├── GRPC.NET7.Client
+│   ├── ProtoCore.NET.Client
 │   │   ├── Helpers
 │   │   │   ├── AuthHeaderInterceptor.cs
 │   │   │   ├── TracerInterceptor.cs
@@ -27,13 +27,13 @@ Solution 'ProtoCore.NET' (6 of 6 projects)
 │   │   │   ├── Extension.cs
 │   │   ├── Program.cs
 ├── Shared
-│   ├── GRPC.NET7.Proto
+│   ├── ProtoCore.NET.Proto
 │   │   ├── Helpers
 │   │   │   ├── Utility.cs
 │   │   ├── Authentication.cs
 │   │   ├── BaseResponse.cs
 │   │   ├── User.cs
-├── GRPC.NET7.Api
+├── ProtoCore.NET.Api
 │   ├── Properties
 │   │   ├── launchSettings.json
 │   ├── Converters
@@ -57,7 +57,7 @@ Solution 'ProtoCore.NET' (6 of 6 projects)
 │   │   ├── appsettings.json
 │   │   ├── GlobalUsings.cs
 │   │   ├── Program.cs
-├── GRPC.NET7.Core
+├── ProtoCore.NET.Core
 │   ├── AutoMapper
 │   │   ├── AutoMapperProfile.cs
 │   ├── Constants
@@ -77,7 +77,7 @@ Solution 'ProtoCore.NET' (6 of 6 projects)
 │   │   ├── Services
 │   │   │   ├── IGreeterService.cs
 │   │   │   ├── IUserService.cs
-├── GRPC.NET7.Repository
+├── ProtoCore.NET.Repository
 │   ├── Dependencies
 │   │   ├── Base
 │   │   │   ├── BaseRepository.cs
@@ -87,7 +87,7 @@ Solution 'ProtoCore.NET' (6 of 6 projects)
 │   │   ├── 20221204002240_initial.cs
 │   │   ├── AppDbContextModelSnapshot.cs
 │   ├── UserRepository.cs
-├── GRPC.NET7.Service
+├── ProtoCore.NET.Service
 │   ├── Dependencies
 │   │   ├── Base
 │   │   │   ├── GreeterService.cs
@@ -149,7 +149,7 @@ Before running the application, ensure the following prerequisites are met:
 
 2. **Database**:
 
-   - Set up the database connection string in the `appsettings.json` file under the `GRPC.NET7.Api` project.
+   - Set up the database connection string in the `appsettings.json` file under the `ProtoCore.NET.Api` project.
 
 ---
 
@@ -160,7 +160,7 @@ Follow these steps to set up and run the application:
 1. **Clone the Repository**:
 
    ```
-   git clone https://github.com/biswajitpanday/Boilerplate.NET7gRPC.git
+   git clone https://github.com/biswajitpanday/ProtoCore.NET.git
    ```
 
 2. **Open the Solution**:
@@ -169,23 +169,23 @@ Follow these steps to set up and run the application:
 
 3. **Configure Database**:
 
-   - Navigate to `GRPC.NET7.Api/appsettings.json`.
+   - Navigate to `ProtoCore.NET.Api/appsettings.json`.
    - Update the `ConnectionStrings` section with your database connection string.
 
 4. **Set Startup Projects**:
 
    - Right-click the solution and select `Properties`.
    - Under `Startup Project`, choose `Multiple Startup Projects`.
-   - Set `GRPC.NET7.Api` and `GRPC.NET7.Client` actions to `Start`.
+   - Set `ProtoCore.NET.Api` and `ProtoCore.NET.Client` actions to `Start`.
    - Click `Apply`, then `Save`.
 
 5. **Run the Application**:
 
    - Click the `Start` button in Visual Studio.
    - Two command prompts will open:
-     - One for the server (`GRPC.NET7.Api`), indicating the server is running:
+     - One for the server (`ProtoCore.NET.Api`), indicating the server is running:
        ![Server Console](ServerImage.png)
-     - Another for the client (`GRPC.NET7.Client`), providing interactive options to test the services:
+     - Another for the client (`ProtoCore.NET.Client`), providing interactive options to test the services:
        ![Client Console](ClientImage.png)
 
 ---
@@ -231,14 +231,14 @@ Contributions are highly encouraged! Follow these steps to get involved:
 
 Have questions or need support? Reach out via:
 
-- [GitHub Issues](https://github.com/biswajitpanday/Boilerplate.NET7gRPC/issues)
+- [GitHub Issues](https://github.com/biswajitpanday/ProtoCore.NET/issues)
 - Email: [biswajitmailid@gmail.com](biswajitmailid@gmail.com)
 
 ---
 
 ## Planned Improvements
 
-- Convert the `GRPC.NET7.Proto` project into a standalone NuGet package for reuse in multiple services.
+- Convert the `ProtoCore.NET.Proto` project into a standalone NuGet package for reuse in multiple services.
 - Add Swagger integration for API documentation (currently not functional).
 
 ---
@@ -246,7 +246,7 @@ Have questions or need support? Reach out via:
 ## Repository
 
 The source code for this project is available on GitHub:
-[Boilerplate.NET7gRPC](https://github.com/biswajitpanday/Boilerplate.NET7gRPC)
+[ProtoCore.NET](https://github.com/biswajitpanday/ProtoCore.NET)
 
 ---
 
